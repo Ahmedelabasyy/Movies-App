@@ -1,7 +1,13 @@
-import React from 'react'
+import React from "react";
+import "./footer.scss";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <div>Footer</div>
-  )
-}
+    <div className="footer">
+      <h2>Cinema 2go</h2>
+      <div>©2021, Movie, Inc. or its affiliates</div>
+    </div>
+  );
+};
+
+export default Footer;
