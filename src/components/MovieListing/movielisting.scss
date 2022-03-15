@@ -2,6 +2,7 @@
 
 .movie-list,
 .show-list {
+    padding: 0 30px;
     margin: 20px 0px;
     h2 {
         color: $font-secondary;
@@ -11,10 +12,5 @@
         
     }
 
-    .movie-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
-        grid-gap: 23px;
-    }
 }
 
