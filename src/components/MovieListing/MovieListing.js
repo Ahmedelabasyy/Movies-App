@@ -7,7 +7,9 @@ import MovieCard from '../MovieCard/MovieCard'
 export default function MovieListing() {
   const {allMovies} = useSelector((state) => state.movies);
   const {allShows} = useSelector((state) => state.movies);
-  let renderMovies, renderShows = '';
+  const {allEpisods} = useSelector((state) => state.movies);
+
+  let renderMovies, renderShows, renderEpisods = '';
 
   renderMovies = allMovies.Response === 'True' ? (
     allMovies.Search.map((movie, index) => (
@@ -19,6 +21,14 @@ export default function MovieListing() {
 
   renderShows = allShows.Response === 'True' ? (
     allShows.Search.map((serie, index) => (
+      <MovieCard key={index} data={serie} />
+    ))
+  ): (
+    <div className="movies-error"><h3 className="error">No movies Found</h3></div>
+  )
+
+  renderEpisods = allEpisods.Response === 'True' ? (
+    allEpisods.Episodes.map((serie, index) => (
       <MovieCard key={index} data={serie} />
     ))
   ): (
@@ -40,6 +50,15 @@ export default function MovieListing() {
         <div className="movie-container">
           <Slider {...settings}>
             {renderShows}
+          </Slider>
+        </div>
+      </div>
+
+      <div className="movie-list">
+        <h2>Continue Watching</h2>
+        <div className="movie-container">
+          <Slider {...settings}>
+            {renderEpisods}
           </Slider>
         </div>
       </div>

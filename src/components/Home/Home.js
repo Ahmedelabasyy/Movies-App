@@ -2,13 +2,16 @@ import React, { useEffect } from 'react';
 import './home.scss';
 import MovieListing from '../MovieListing/MovieListing';
 import { useDispatch } from 'react-redux';
-import { fetchAllMovies, fetchAllShows } from '../../features/slice/moviesSlice';
+import { fetchAllEpisods, fetchAllMovies, fetchAllShows } from '../../features/slice/moviesSlice';
 export default function Home() {
-  
+  const Movies = "Game",
+        Shows = "Walking",
+        Episods = "Game of Thrones";
   const dispatch = useDispatch();
   useEffect(() => {
-      dispatch(fetchAllMovies());
-      dispatch(fetchAllShows());
+      dispatch(fetchAllMovies(Movies));
+      dispatch(fetchAllShows(Shows));
+      dispatch(fetchAllEpisods(Episods));
     
   }, [dispatch]);
   return (

@@ -3,15 +3,18 @@ import {Apikey} from '../../common/apis/movieApiKey';
 import movieApi from '../../common/apis/movieApi';
 
 
-export const fetchAllMovies = createAsyncThunk("allMovies/fetchAllMovies", async () => {
-    const movieText = "Game";
-    const res = await movieApi.get(`?apiKey=${Apikey}&s=${movieText}&type=movie`);
+export const fetchAllMovies = createAsyncThunk("allMovies/fetchAllMovies", async (term) => {
+    const res = await movieApi.get(`?apiKey=${Apikey}&s=${term}&type=movie`);
     return res.data;
 });
 
-export const fetchAllShows = createAsyncThunk("allShows/fetchAllShows", async () => {
-    const movieText = "Walking";
-    const res = await movieApi.get(`?apiKey=${Apikey}&s=${movieText}&type=series`);
+export const fetchAllShows = createAsyncThunk("allShows/fetchAllShows", async (term) => {
+    const res = await movieApi.get(`?apiKey=${Apikey}&s=${term}&type=series`);
+    return res.data;
+});
+
+export const fetchAllEpisods = createAsyncThunk("allEpisods/fetchAllEpisods", async (term) => {
+    const res = await movieApi.get(`?apiKey=${Apikey}&t=${term}&Season=1`);
     return res.data;
 });
 
@@ -26,6 +29,7 @@ export const moviesSlice = createSlice({
     initialState: {
         allMovies: {},
         allShows: {},
+        allEpisods: {},
         selectedItem: {}
     },
     reducers: {
@@ -45,6 +49,9 @@ export const moviesSlice = createSlice({
         },
         [fetchAllShows.fulfilled]: (state, action) => {
             state.allShows = action.payload;
+        },
+        [fetchAllEpisods.fulfilled]: (state, action) => {
+            state.allEpisods = action.payload;
         },
         [fetchMovieOrShowDetail.fulfilled]: (state, action) => {
             state.selectedItem = action.payload;
