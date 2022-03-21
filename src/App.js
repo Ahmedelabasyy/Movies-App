@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes  } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
@@ -9,7 +9,7 @@ import './App.scss';
 function App() {
     return (
         <div className="App">
-            <Router>
+            <Router basename={process.env.PUBLIC_URL}>
                 <Header />
                     <div className="container">
                         <Routes >
