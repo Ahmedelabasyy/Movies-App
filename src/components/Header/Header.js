@@ -22,7 +22,7 @@ export default function Header() {
   return (
     <div className='header'>
       <Link to="/">
-        <h2 className="logo">Cinema 2Go</h2>
+        <h2 className="logo"><i className='fa fa-television'></i>Cinema2Go</h2>
       </Link>
 
       <div className="search-bar">
